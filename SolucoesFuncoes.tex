@@ -1,0 +1,240 @@
+#include <stdio.h>
+
+/*
+int maior (int n, int v[])
+{ 
+   if (n == 1)
+      return v[0];
+   else {
+      int x;
+      x = maior (n-1, v);
+      // x é o máximo de v[0..n-2] 
+      if (x > v[n-1]) return x;
+      else return v[n-1]; 
+   }
+}*/
+
+int maior (int n, int v[]) {
+   int x;
+   if (n == 1) x = v[0];
+   else {
+      x = maior (n-1, v); 
+      if (x < v[n-1]) x = v[n-1];
+   }
+   return x;
+}
+
+int main(void) 
+	int a[4];
+	
+	for ( int x= 0; x<= 3; x++){
+	printf("Digite Elemento"); scanf("%d", &a[x]);}
+	
+	printf("%d", maior(4, a));
+}
+
+// 1. Função de Fatorial com recursividade  
+#include <stdio.h>
+int fatorial ( int n) {
+    int resultado;
+    if ( n <= 1)
+        resultado = 1;
+    else
+        resultado = n * fatorial( n - 1);
+    return resultado;
+}
+
+int main()
+{   int num, resultado;
+ 
+    printf("Digite número \n");
+    scanf("%d", &num);
+ 
+    resultado = fatorial(num);
+    printf("Fatorial %d = %d", num, resultado);
+
+    return 0;
+}
+
+// 2. Ordenação de Vetor A - Solução 1
+
+#include <stdio.h>
+#define tamanho_vetor 4
+
+int ordenaVetor(int *VetB, int tamanho_vet){
+    int menor, i, y, x, cont;
+    int VetAux[tamanho_vet];
+    
+    for (x = 0; x <= tamanho_vet-1; x++)
+      VetAux[x] = VetB[x];
+    
+    for (x=0; x <= tamanho_vet-1; x++) {
+        menor = VetAux[x]; cont = 0;
+        for (y = 0; y <= tamanho_vet-1; y++) {
+            if (menor < VetB[y]) {
+                cont++;
+            }
+        }
+        if (cont == 0)
+          i = tamanho_vet - 1;
+        else
+          i = tamanho_vet - 1 - cont;
+        
+        VetB[i] = menor;
+    }
+    
+}
+
+int main()
+{   int x;
+    int VetA[tamanho_vetor];
+    int VetC[tamanho_vetor];
+
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("Digite número %d = ", x + 1);
+        scanf("%d", &VetA[x]);
+        VetC[x] = VetA[x];
+    }
+    
+    ordenaVetor(VetA, tamanho_vetor);
+    
+    printf("Vetor Original:");
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("%d ; ", VetC[x]);
+    }
+
+    printf("\nVetor Ordenado:");
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("%d ; ", VetA[x]);
+    }
+
+    return 0;
+}
+
+// 2. Ordenação de Vetor A - Solução 2
+
+#include <stdio.h>
+#define tamanho_vetor 5
+
+    int ordenaVetor(int *VetB, int tamanho_vet){
+    int aux, y, x;
+    for (x=0; x <= tamanho_vet-1; x++) {
+        for (y = x; y <= tamanho_vet-1; y++) {
+            // Ordenação crescente   (VetB[x] > VetB[y])
+            // Ordenação Decrescente (VetB[x] < VetB[y])
+            if (VetB[x] > VetB[y]) {
+                aux = VetB[x];
+                VetB[x] = VetB[y];
+                VetB[y] = aux;
+            }
+        }
+    }
+}
+
+// Fatorial - Função Recursiva
+
+int main()
+{   int x;
+    int VetA[tamanho_vetor];
+    int VetC[tamanho_vetor];
+
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("Digite número %d = ", x + 1);
+        scanf("%d", &VetA[x]);
+        VetC[x] = VetA[x];
+    }
+    
+    ordenaVetor(VetA, tamanho_vetor);
+    
+    printf("Vetor Original:");
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("%d ; ", VetC[x]);
+    }
+    
+    printf("\nVetor Ordenado:");
+
+    for (x = 0; x <= tamanho_vetor-1; x++){
+        printf("%d ; ", VetA[x]);
+    }
+
+    return 0;
+}
+
+// Sequência de Fibonacci - Função Recursiva
+#include <stdio.h>
+
+int memo[] = {};
+int fib(int n) {
+    int f;
+    //if ( n in memo ) return memo[n];
+    //if ( n == memo[n] ) return memo[n];
+    if (n<=2) return 1;
+    else f = fib(n-1) + fib(n-2);
+    memo[n] = f;
+    return f;
+}
+// 1 + 1 + 2 + 3 + 5 + 8 + 13 + 21 + 34
+int main()
+{   int n, total;
+    printf("Digite um Número? ");
+    scanf("%d", &n);
+    total = fib(n);
+    printf("%d", total);
+
+    return 0;
+}
+
+// Imprimir de 1 a 100 - Função Recursiva
+
+int Imprime(int x){
+    printf("%d ", 101 - x);
+    if ( x == 1) return 1;
+    return Imprime(x-1);
+}
+// 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10
+
+int main()
+{  int x = 100;
+    Imprime(x);
+    return 0;
+}
+
+************ OK 
+void fImprime(int num) {
+    printf("%d ", 11 - num);
+    if ( num != 1) 
+      fImprime(num-1);
+}
+
+int main()
+{   fImprime(10);
+    return 0;
+}
+
+******** Fatorial
+
+int fFatorial(int num) {
+    if ( num == 0) return 1;
+    else return num * fFatorial(num - 1);
+}
+
+int main()
+{   int numero;
+    scanf("%i",&numero);
+    if ( numero >=0 )
+	  printf("%d", fFatorial(numero));
+	else
+	  printf("Fatorial não existe");
+    return 0;
+}
+
+*** Somatorio de 2 ate 100 dos pares
+int fSomatorio(int num) {
+    if ( num == 0) return 0;
+	 return num + fSomatorio(num - 2);
+}
+
+int main()
+{  	printf("%d", fSomatorio(10));
+    return 0;
+}
