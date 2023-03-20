@@ -1,0 +1,83 @@
+-- Definição da Classe
+package com.grupojava.testejava.entities;
+
+public class Aluno {
+
+	// Niveis de visibilidade; encapsulamento
+	private Integer mat;
+	private String nome;
+	private Integer idade;
+	
+	// Construtor VAZIO
+	public Aluno() {}
+	
+	// Construtor com parâmetros
+
+	public Aluno(Integer mat, String nome, Integer idade) {
+			this.mat = mat;
+			this.nome = nome;
+			this.idade = idade;
+	}	
+
+	// Métodos de Acesso aos atributos
+	public Integer getMat() {
+		return mat;
+	}
+
+	public void setMat(Integer mat) {
+		this.mat = mat;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome  = nome;
+	}
+}
+
+package com.grupojava.testejava;
+
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.grupojava.testejava.entities.Aluno;
+
+@SpringBootApplication
+public class TestejavaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TestejavaApplication.class, args);
+		
+		// inputs; leitura de valores via teclado
+		Scanner ler  = new Scanner(System.in);
+	
+		Aluno aluno  = new Aluno(); // NEW EH A INSTANCIA
+		aluno.setMat(123);
+		aluno.setNome("Heleno");
+		
+		// sysout + ctrl + barra de espaço
+		System.out.println(aluno.getMat() + " - " + aluno.getNome());
+		aluno.setNome("Heleno Cardoso");
+		System.out.println(aluno.getNome());
+				
+		System.out.println();
+		
+		Aluno aluno1 = new Aluno();
+		System.out.print("Informe a matrúcla? ");
+		int mat = ler.nextInt();
+
+		System.out.print("Informe nome do aluno? ");
+		String nome = ler.next();
+	
+		aluno1.setMat(mat);
+		aluno1.setNome(nome);
+		System.out.println(aluno1.getMat());
+		System.out.println(aluno1.getNome());
+
+		ler.close();
+	}
+}

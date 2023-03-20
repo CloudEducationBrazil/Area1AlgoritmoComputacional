@@ -12,7 +12,10 @@
 	Dicas Extensões: Live server (servidor web), color Highlight (css), 
 	=> ESLint (Java Script), JSX HTML, Visual Studio IntelliCode
 	Nota: prettier (formatador de código), arquivo .prettierrc
-7. NodeJS (https://nodejs.org/en/download/) - gerenciador de dependências yarn do frontend (npm -v; yarn -v)
+7. NodeJS (https://nodejs.org/en/download/) - gerenciador de dependências yarn do frontend 
+   npm install -g yarn ou npm install --global yarn 
+   testar (npm -v; yarn -v)
+
 8. PostGreSQL e pgAdmin (www.postgresql.org)
 
 Outros:
